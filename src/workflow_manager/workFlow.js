@@ -213,6 +213,7 @@ function Workflow() {
       </SidePanel>
       <DeleteConfirmationModal isOpen={deleteModal} onConfirm={() =>{
         deleteNode(deleteId)
+            setDeleteModal(false)
       }} onClose={() =>{
         setDeleteModal(false)
       }}/>
