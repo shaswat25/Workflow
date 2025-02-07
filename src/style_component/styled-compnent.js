@@ -49,7 +49,7 @@ const SidePanel = styled.div`
   background-color: #d6d0c4;
   padding: 20px;
   border-left: 1px solid #ddd;
-  height: 100%;
+  height: 96%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
