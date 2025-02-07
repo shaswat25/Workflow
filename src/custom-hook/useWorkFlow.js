@@ -26,8 +26,10 @@ const useWorkflow = () => {
   );
   const addNode = useCallback((type, data,position) => {
     setNodes((nds) => {
+     let uniqueId=parseInt(nds[nds.length-1].id.split("-")[1])+1
+     
       const newNode = { 
-        id: `node-${nds.length + 1}`,  // Ensure length increments correctly
+        id: `node-${uniqueId}`,  // Ensure length increments correctly
         type, 
         data:data? { ...data }:{}, 
         position:position || { x: 100, y: 100 } 
