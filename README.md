@@ -71,7 +71,9 @@ There are 3 button on the header ,
 
   - Action column can be used to edit or delete the node within the table.
 
-  - Table has a propert of virtualisd scroll after a certain height
+  - Table has a propert of virtualisd scroll after a certain height.
+    
+  - Table is horizontally scrollable for better preview in of its rows.
 
   ## Assumptions  
 
