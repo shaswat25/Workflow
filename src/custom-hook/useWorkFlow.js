@@ -33,8 +33,7 @@ const useWorkflow = () => {
         position:position || { x: 100, y: 100 } 
       };
       
-      console.log("Existing nodes:", nds.length);
-      console.log("Adding new node:", newNode);
+      
   
       return [...nds, newNode]; // Append new node without replacing
     });
