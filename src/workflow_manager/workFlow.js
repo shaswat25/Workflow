@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useCallback } from "react";
 
 import {
   ReactFlow,
@@ -37,6 +37,28 @@ function Workflow() {
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
   };
+  const onDrop = useCallback(
+    (event) => {
+      event.preventDefault();
+  
+      const type = event.dataTransfer.getData("application/reactflow");
+      if (!type) return;
+  
+      // Get the drop position relative to the ReactFlow container
+      const reactFlowBounds = event.target.getBoundingClientRect();
+      const sidePanelWidth = window.innerWidth * 0.28;
+      const position = reactFlowBounds
+        ? {
+            x: event.clientX - reactFlowBounds.left - sidePanelWidth,
+            y: event.clientY - reactFlowBounds.top,
+          }
+        : { x: 100, y: 100 }; // Fallback position if bounds are not available
+  
+      // Add the new node at the calculated position
+      addNode(type, undefined, position);
+    },
+    [addNode] // Dependencies: ensure it doesn't recreate unless `addNode` changes
+  );
   const columnsConfig = [
     {
       accessor: 'type',
@@ -119,25 +141,7 @@ function Workflow() {
             setNodeConfigModal(true);
             setSelectedNode(node);
           }}
-          onDrop={(event) => {
-            event.preventDefault();
-
-            const type = event.dataTransfer.getData("application/reactflow");
-            if (!type) return;
-
-            // Get the drop position relative to the ReactFlow container
-            const reactFlowBounds = event.target.getBoundingClientRect();
-            const sidePanelWidth = window.innerWidth * 0.28;
-            const position = reactFlowBounds
-              ? {
-                x: event.clientX - reactFlowBounds.left - sidePanelWidth,
-                y: event.clientY - reactFlowBounds.top,
-              }
-              : { x: 100, y: 100 };  // Fallback position if bounds are not available
-
-            // Add the new node at the calculated position
-            addNode(type, undefined, position);
-          }}
+          onDrop={onDrop}
           onDragOver={(event) => event.preventDefault()} // Allow dropping
           fitView
         />
