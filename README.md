@@ -43,7 +43,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Brief  Explaination
+## Brief  Explaination of flow
 
 There is default Task nodes on first appearance without any data.
 
@@ -70,8 +70,26 @@ There are 3 button on the header ,
  - React table is present with all the nodes with desired columns.
 
   - Action column can be used to edit or delete the node within the table.
-  
+
   - Table has a propert of virtualisd scroll after a certain height
+
+  ## Assumptions  
+
+  1. Task nodes has status as "New","In progress","Completed" depending upon status of task.
+
+  2. Due date is kept to be for future dates.
+
+  3. Condition Node has status as  "Satisfied","Failed".
+
+  4. Condition Node has a text field for writing condition.
+
+  4. Notification Node has status as "sent Succesfully","failed".
+
+  5. Notification Node has a text field for writing messages with status as dropdown.
+
+  6. Since Nodes can be added in two ways ie Drag/Drop or clicking the button, So if its through click event then they have to    fill  details and then node gets added and for Drag and drop its vice versa.
+
+
  
 
 
